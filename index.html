@@ -17,7 +17,7 @@ div.tooltip {
 }
 
 </style>
-<h1> What other factors can affect a movies Revenue? </h1>
+<h1> What other factors can affect a movie's Revenue? </h1>
 <b1> Could it have anything to do with how good the movie is? </b1>
 <b2> <br/>The same is now plotted below but with movies rated highly by imdb shown in green, and movies rated poorly in red.</b2>
 <b2> <br/>Notice a pattern? </b2>
@@ -100,25 +100,7 @@ d3.csv("https://miketeufel1.github.io/project/movies3.csv", function(error, data
             if (d.vote_average >= 7.5) {return .8}
             else 	if (d.vote_average <= 5) { return .8 }
               else { return .8 }
-        ;})
-  
-  
-     .on("mouseover", function(d) {
-       div.transition()
-         .duration(200)
-         .style("opacity", .9);
-       div.html(d.original_title +"("+d.release_year+")"+ 
-                "<br/>" + "Budget: $" + d.budget+"M"+ 
-                "<br/>" + "Revenue: $" + Math.round(d.revenue*100)/100+"M"+
-                "<br/>" + "IMDB rating: " + d.vote_average)
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 28) + "px");
-       })
-     .on("mouseout", function(d) {
-       div.transition()
-         .duration(5000)
-         .style("opacity", 0);
-       });
+        ;});
 
 
   // add the X Axis
