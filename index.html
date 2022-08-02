@@ -97,6 +97,11 @@ d3.csv("https://miketeufel1.github.io/project/movies3.csv", function(error, data
               else { return "lightgray" }
         ;})
   
+     .attr("stroke", function(d) {
+            if (d.original_title == "Treasure Planet") {return "Black"}
+            else 	if (d.vote_average <= 5) { return "transparent" }
+              else { return "transparent"};})
+    
      .attr('fill-opacity', function(d) {
             if (d.vote_average >= 7.5) {return .8}
             else 	if (d.vote_average <= 5) { return .8 }
@@ -113,7 +118,27 @@ d3.csv("https://miketeufel1.github.io/project/movies3.csv", function(error, data
   svg.append("g")
       .call(d3.axisLeft(y));
   
-    //title
+
+  // X-axis label
+  svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", 253)
+    .attr("y", height -12)
+    .text("Treasure Planet");
+  
+   svg.selectAll("line")
+      .data(data)
+      .enter()
+      .append("line")
+      .attr("x1", 99)
+      .attr("y1", 529)
+      .attr("x2", 150)
+      .attr("y2", 533)
+      .attr("stroke-width", .5)
+      .attr("stroke", "black");
+  
+      //title
     svg.append("text")
     .attr("class", "x label")
     .attr("text-anchor", "end")
